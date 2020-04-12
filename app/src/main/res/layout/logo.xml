@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <ImageView
+            android:layout_marginTop="30dp"
+            android:id="@+id/logo"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="80dp"
+            android:src="@drawable/main_logo"/>
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SPORTA"
+            android:textStyle="bold"
+            android:textColor="#FF9800"
+            android:textSize="36dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/logo"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dễ dàng - Vui vẻ - Hấp dẫn"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/appName"
+            android:id="@+id/title"
+            android:textSize="18dp"
+            android:textColor="#FF9800"
+            android:layout_marginBottom="100dp"/>
+        <!--    Đăng nhập với-->
+        <TextView
+            android:id="@+id/login_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng nhập bằng"
+            android:layout_centerHorizontal="true"
+            android:textColor="#070705"
+            android:layout_below="@+id/title"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif"
+            android:textSize="20dp"/>
+        <Button
+            android:id="@+id/loginLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:drawableLeft="@drawable/mail_icon"
+            android:text="Đăng nhập bằng email"
+            android:textAllCaps="false"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/login_by"/>
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/loginLocal"
+            />
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/login_button"/>
+</RelativeLayout>

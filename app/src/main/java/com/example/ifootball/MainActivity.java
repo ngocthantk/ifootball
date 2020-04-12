@@ -51,9 +51,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView info;
     private ProfilePictureView pictureView;
     private Button logoutButton, loginLocalButton, login_local_button;
-    private ImageButton backButton, imageSigninButon;
+    private ImageButton backButton;
     private EditText username, password;
     private String email, pass;
+    private TextView appName, title, login_by;
+    private ImageView logo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
                 signInButton.setVisibility(View.INVISIBLE);
                 backButton.setVisibility(View.VISIBLE);
                 login_local_button.setVisibility(View.VISIBLE);
+                appName.setVisibility(View.INVISIBLE);
+                title.setVisibility(View.INVISIBLE);
+                login_by.setVisibility(View.INVISIBLE);
                 loginLocal();
                 back();
             }
@@ -95,6 +100,10 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.loginPassword);
         login_local_button = findViewById(R.id.login_local);
         backButton = findViewById(R.id.back);
+        logo = findViewById(R.id.logo);
+        appName = findViewById(R.id.appName);
+        title = findViewById(R.id.title);
+        login_by = findViewById(R.id.login_by);
     }
 
     private void loginFacebook(){
@@ -122,10 +131,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 LoginManager.getInstance().logOut();
-                logoutButton.setVisibility(View.INVISIBLE);
-                info.setText("");
-                pictureView.setProfileId(null);
+                pictureView.setVisibility(View.INVISIBLE);
+                username.setVisibility(View.INVISIBLE);
+                password.setVisibility(View.INVISIBLE);
+                loginLocalButton.setVisibility(View.VISIBLE);
                 loginButton.setVisibility(View.VISIBLE);
+                signInButton.setVisibility(View.VISIBLE);
+                backButton.setVisibility(View.INVISIBLE);
+                login_local_button.setVisibility(View.INVISIBLE);
+                appName.setVisibility(View.VISIBLE);
+                title.setVisibility(View.VISIBLE);
+                login_by.setVisibility(View.VISIBLE);
+                info.setVisibility(View.INVISIBLE);
+                logoutButton.setVisibility(View.INVISIBLE);
+                logo.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -199,6 +218,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         logoutButton.setVisibility(View.INVISIBLE);
+        pictureView.setVisibility(View.INVISIBLE);
+        username.setVisibility(View.INVISIBLE);
+        password.setVisibility(View.INVISIBLE);
+        loginLocalButton.setVisibility(View.VISIBLE);
+        signInButton.setVisibility(View.VISIBLE);
+        backButton.setVisibility(View.INVISIBLE);
+        login_local_button.setVisibility(View.INVISIBLE);
+        appName.setVisibility(View.VISIBLE);
+        title.setVisibility(View.VISIBLE);
+        login_by.setVisibility(View.VISIBLE);
+        info.setVisibility(View.INVISIBLE);
         LoginManager.getInstance().logOut();
         super.onStart();
     }
@@ -209,18 +239,32 @@ public class MainActivity extends AppCompatActivity {
             public void onCompleted(JSONObject object, GraphResponse response) {
                 Log.d("JSON", response.getJSONObject().toString());
                 try {
-                    String email = object.getString("name");
-                    info.setText(email);
+                    String name = object.getString("name");
+                    info.setText(name);
                     pictureView.setProfileId(Profile.getCurrentProfile().getId());
+
                     loginButton.setVisibility(View.INVISIBLE);
                     logoutButton.setVisibility(View.VISIBLE);
+                    logo.setVisibility(View.INVISIBLE);
+                    info.setVisibility(View.VISIBLE);
+                    pictureView.setVisibility(View.VISIBLE);
+                    username.setVisibility(View.INVISIBLE);
+                    password.setVisibility(View.INVISIBLE);
+                    loginLocalButton.setVisibility(View.INVISIBLE);
+                    loginButton.setVisibility(View.INVISIBLE);
+                    signInButton.setVisibility(View.INVISIBLE);
+                    backButton.setVisibility(View.INVISIBLE);
+                    login_local_button.setVisibility(View.INVISIBLE);
+                    appName.setVisibility(View.INVISIBLE);
+                    title.setVisibility(View.INVISIBLE);
+                    login_by.setVisibility(View.INVISIBLE);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         });
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "id,name,email");
+        parameters.putString("fields", "id,name");
         graphRequest.setParameters(parameters);
         graphRequest.executeAsync();
     }
@@ -237,6 +281,10 @@ public class MainActivity extends AppCompatActivity {
                 signInButton.setVisibility(View.VISIBLE);
                 backButton.setVisibility(View.INVISIBLE);
                 login_local_button.setVisibility(View.INVISIBLE);
+                pictureView.setVisibility(View.INVISIBLE);
+                appName.setVisibility(View.VISIBLE);
+                title.setVisibility(View.VISIBLE);
+                login_by.setVisibility(View.VISIBLE);
             }
         });
     }
