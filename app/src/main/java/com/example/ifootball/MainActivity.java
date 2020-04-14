@@ -48,62 +48,45 @@ public class MainActivity extends AppCompatActivity {
     private int RC_SIGN_IN = 0;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
-    private TextView info;
-    private ProfilePictureView pictureView;
-    private Button logoutButton, loginLocalButton, login_local_button;
-    private ImageButton backButton;
-    private EditText username, password;
-    private String email, pass;
-    private TextView appName, title, login_by;
-    private ImageView logo;
+    private ImageButton loginLocalButton, dangky, fakeLoginButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-
         findId();
+
+        clickDangky();
+
+        //login local
         loginLocalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pictureView.setVisibility(View.INVISIBLE);
-                username.setVisibility(View.VISIBLE);
-                password.setVisibility(View.VISIBLE);
-                loginLocalButton.setVisibility(View.INVISIBLE);
-                loginButton.setVisibility(View.INVISIBLE);
-                signInButton.setVisibility(View.INVISIBLE);
-                backButton.setVisibility(View.VISIBLE);
-                login_local_button.setVisibility(View.VISIBLE);
-                appName.setVisibility(View.INVISIBLE);
-                title.setVisibility(View.INVISIBLE);
-                login_by.setVisibility(View.INVISIBLE);
-                loginLocal();
-                back();
+                Toast.makeText(MainActivity.this, "click", Toast.LENGTH_SHORT).show();
             }
         });
 
+        fakeLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginButton.performClick();
+            }
+        });
+        //login facebook
         FacebookSdk.sdkInitialize(getApplicationContext());
         loginFacebook();
-        logoutFacebook();
 
+        //sign in google
         signInButton.setSize(SignInButton.SIZE_WIDE);
         signinGoogle();
     }
 
     private void findId(){
-        info = findViewById(R.id.info);
-        loginButton = findViewById(R.id.login_button);
-        pictureView = findViewById(R.id.avatar);
-        signInButton = findViewById(R.id.sign_in_button);
-        logoutButton = findViewById(R.id.logout_button);
-        loginLocalButton = findViewById(R.id.loginLocal);
-        username = findViewById(R.id.loginUserName);
-        password = findViewById(R.id.loginPassword);
-        login_local_button = findViewById(R.id.login_local);
-        backButton = findViewById(R.id.back);
-        logo = findViewById(R.id.logo);
-        appName = findViewById(R.id.appName);
-        title = findViewById(R.id.title);
-        login_by = findViewById(R.id.login_by);
+        loginButton = findViewById(R.id.login_button); // button facebook login
+        signInButton = findViewById(R.id.sign_in_button); // dang nhap google
+        loginLocalButton = findViewById(R.id.loginLocal); // dn tai khoan local
+        dangky = findViewById(R.id.register); // nut dang ky
+        fakeLoginButton = findViewById(R.id.fake_login_button); // nut gia login facebook
     }
 
     private void loginFacebook(){
@@ -122,44 +105,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onError(FacebookException error) {
 
-            }
-        });
-    }
-
-    private void logoutFacebook(){
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LoginManager.getInstance().logOut();
-                pictureView.setVisibility(View.INVISIBLE);
-                username.setVisibility(View.INVISIBLE);
-                password.setVisibility(View.INVISIBLE);
-                loginLocalButton.setVisibility(View.VISIBLE);
-                loginButton.setVisibility(View.VISIBLE);
-                signInButton.setVisibility(View.VISIBLE);
-                backButton.setVisibility(View.INVISIBLE);
-                login_local_button.setVisibility(View.INVISIBLE);
-                appName.setVisibility(View.VISIBLE);
-                title.setVisibility(View.VISIBLE);
-                login_by.setVisibility(View.VISIBLE);
-                info.setVisibility(View.INVISIBLE);
-                logoutButton.setVisibility(View.INVISIBLE);
-                logo.setVisibility(View.VISIBLE);
-            }
-        });
-    }
-
-    private void loginLocal(){
-        login_local_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                email = username.getText().toString();
-                pass = password.getText().toString();
-                if (email.equals("thang@123") && pass.equals("thang123")){
-                    Toast.makeText(MainActivity.this, "Đăng nhập thành công ", Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(MainActivity.this, "mail: " + email + "," + pass, Toast.LENGTH_LONG).show();
-                }
             }
         });
     }
@@ -206,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
             // Signed in successfully, show authenticated UI.
-            Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+            Intent intent = new Intent(MainActivity.this, Account.class);
             startActivity(intent);
 //            updateUI(account);
         } catch (ApiException e) {
@@ -217,18 +162,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        logoutButton.setVisibility(View.INVISIBLE);
-        pictureView.setVisibility(View.INVISIBLE);
-        username.setVisibility(View.INVISIBLE);
-        password.setVisibility(View.INVISIBLE);
-        loginLocalButton.setVisibility(View.VISIBLE);
-        signInButton.setVisibility(View.VISIBLE);
-        backButton.setVisibility(View.INVISIBLE);
-        login_local_button.setVisibility(View.INVISIBLE);
-        appName.setVisibility(View.VISIBLE);
-        title.setVisibility(View.VISIBLE);
-        login_by.setVisibility(View.VISIBLE);
-        info.setVisibility(View.INVISIBLE);
         LoginManager.getInstance().logOut();
         super.onStart();
     }
@@ -240,24 +173,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("JSON", response.getJSONObject().toString());
                 try {
                     String name = object.getString("name");
-                    info.setText(name);
-                    pictureView.setProfileId(Profile.getCurrentProfile().getId());
-
-                    loginButton.setVisibility(View.INVISIBLE);
-                    logoutButton.setVisibility(View.VISIBLE);
-                    logo.setVisibility(View.INVISIBLE);
-                    info.setVisibility(View.VISIBLE);
-                    pictureView.setVisibility(View.VISIBLE);
-                    username.setVisibility(View.INVISIBLE);
-                    password.setVisibility(View.INVISIBLE);
-                    loginLocalButton.setVisibility(View.INVISIBLE);
-                    loginButton.setVisibility(View.INVISIBLE);
-                    signInButton.setVisibility(View.INVISIBLE);
-                    backButton.setVisibility(View.INVISIBLE);
-                    login_local_button.setVisibility(View.INVISIBLE);
-                    appName.setVisibility(View.INVISIBLE);
-                    title.setVisibility(View.INVISIBLE);
-                    login_by.setVisibility(View.INVISIBLE);
+                    Toast.makeText(MainActivity.this, name, Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -269,22 +185,12 @@ public class MainActivity extends AppCompatActivity {
         graphRequest.executeAsync();
     }
 
-    private void back(){
-        backButton.setOnClickListener(new View.OnClickListener() {
+    private void clickDangky(){
+        dangky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pictureView.setVisibility(View.VISIBLE);
-                username.setVisibility(View.INVISIBLE);
-                password.setVisibility(View.INVISIBLE);
-                loginLocalButton.setVisibility(View.VISIBLE);
-                loginButton.setVisibility(View.VISIBLE);
-                signInButton.setVisibility(View.VISIBLE);
-                backButton.setVisibility(View.INVISIBLE);
-                login_local_button.setVisibility(View.INVISIBLE);
-                pictureView.setVisibility(View.INVISIBLE);
-                appName.setVisibility(View.VISIBLE);
-                title.setVisibility(View.VISIBLE);
-                login_by.setVisibility(View.VISIBLE);
+                Intent intent = new Intent(MainActivity.this, Register.class);
+                startActivity(intent);
             }
         });
     }
