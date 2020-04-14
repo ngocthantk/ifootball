@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ifootball</string>
+    <string name="app_name">Sporta</string>
     <string name="title_activity_main2">Main2Activity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -13,4 +13,10 @@
     <string name="fb_login_protocol_scheme">fb219255906029414</string>
     <string name="title_activity_facebook_login">FacebookLogin</string>
     <string name="google_sign_up">sign in with google</string>
+    <string name="title_activity_register">Register</string>
+
+    <string name="title_activity_account">Account</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_main3">Main3Activity</string>
 </resources>

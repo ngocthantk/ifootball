@@ -12,9 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Account"
+            android:label="@string/title_activity_account"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Register"
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".login.FacebookLogin"
             android:label="@string/title_activity_facebook_login"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
