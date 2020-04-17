@@ -62,7 +62,7 @@ public class Register extends AppCompatActivity {
         }else{
             //success
             Toast.makeText(Register.this, "Đăng ký thành công với tài khoản: " + mail, Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Register.this, Main2Activity.class);
+            Intent intent = new Intent(Register.this, MainActivity.class);
             startActivity(intent);
         }
     }

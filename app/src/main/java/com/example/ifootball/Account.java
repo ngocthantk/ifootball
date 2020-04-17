@@ -37,12 +37,12 @@ public class Account extends AppCompatActivity {
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
 
-//            String personName = acct.getDisplayName();
+            String personName = acct.getDisplayName();
             String personEmail = acct.getEmail();
 //            String personId = acct.getId();
             Uri personPhoto = acct.getPhotoUrl();
 
-            email.setText(personEmail);
+            email.setText(personName);
             Glide.with(this).load(String.valueOf(personPhoto)).into(avatar);
         }
 
