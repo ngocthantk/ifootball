@@ -11,48 +11,169 @@
         android:layout_height="0dp"
         android:weightSum="10"
         android:orientation="vertical">
+
         <RelativeLayout
-            android:layout_weight="6"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="#ff0"/>
-        <RelativeLayout
-            android:layout_weight="4"
+            android:layout_weight="4">
+
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:id="@+id/avatar"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/fc"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/text_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ngocthantk@gmail.com"
+                android:textColor="#111"
+                android:layout_below="@+id/avatar"
+                android:layout_centerHorizontal="true"
+                android:textSize="24dp"
+                android:textStyle="bold"/>
+        </RelativeLayout>
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="0dp"/>
+            android:layout_height="0dp"
+            android:text="TÀI KHOẢN"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:textColor="#111"/>
+        <Button
+            android:layout_marginLeft="20dp"
+            android:id="@+id/edit_account"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="24dp"
+            android:textColor="#DF3A3A3A"
+            android:textAlignment="viewStart"
+            android:drawableLeft="@drawable/edit"
+            android:text=" Chỉnh sửa tài khoản"
+            android:background="@drawable/dangkylogin"/>
+        <Button
+            android:layout_marginLeft="20dp"
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="24dp"
+            android:textColor="#DF3A3A3A"
+            android:textAlignment="viewStart"
+            android:drawableLeft="@drawable/logout"
+            android:text=" Đăng xuất"
+            android:background="@drawable/dangkylogin"/>
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="THÔNG TIN"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:textColor="#111"/>
+
+        <Button
+            android:id="@+id/gt"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/dangkylogin"
+            android:drawableLeft="@drawable/info"
+            android:text=" Giới thiệu"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="#DF3A3A3A"
+            android:textSize="24dp" />
+
+        <Button
+            android:layout_marginLeft="20dp"
+            android:id="@+id/security_policy"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textColor="#DF3A3A3A"
+            android:textAllCaps="false"
+            android:textSize="24dp"
+            android:textAlignment="viewStart"
+            android:drawableLeft="@drawable/security_policy"
+            android:text=" Chính sách bảo mật"
+            android:background="@drawable/dangkylogin"/>
+
     </LinearLayout>
+
+<!--    footer-->
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#ff0"
         android:orientation="horizontal">
-        <LinearLayout
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/clickbtnfooter"
+            android:layout_weight="1"
+            android:textSize="12dp"
+            android:drawableTop="@drawable/news"
+            android:text="Tin Tức"
+            android:textAllCaps="false"/>
+
+        <Button
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="#00BCD4">
-        </LinearLayout>
-        <LinearLayout
+            android:background="@drawable/clickbtnfooter"
+            android:textSize="12dp"
+            android:drawableTop="@drawable/stadium"
+            android:text="Sân bóng"
+            android:textAllCaps="false"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="#E91E63"/>
-        <LinearLayout
+            android:background="@drawable/clickbtnfooter"
+            android:textSize="12dp"
+            android:drawableTop="@drawable/game"
+            android:text="Tìm đối"
+            android:textAllCaps="false"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="#673AB7"/>
-        <LinearLayout
+            android:background="@drawable/clickbtnfooter"
+            android:text="Câu lạc bộ"
+            android:drawableTop="@drawable/club"
+            android:textAllCaps="false"
+            android:textSize="12dp"
+            android:layout_gravity="center_horizontal"/>
+        <Button
+            android:id="@+id/btn_account"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="#FFC107"/>
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:background="#9C27B0"/>
+            android:drawableTop="@drawable/account"
+            android:background="@drawable/clickbtnfooter"
+            android:textSize="12dp"
+            android:text="Tài khoản"
+            android:textAllCaps="false"
+            android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 

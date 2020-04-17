@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private int RC_SIGN_IN = 0;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
-    private ImageButton loginLocalButton, dangky, fakeLoginButton;
+    private Button fakeLoginButton, loginLocalButton, dangky;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -174,6 +174,8 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     String name = object.getString("name");
                     Toast.makeText(MainActivity.this, name, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, Account.class);
+                    startActivity(intent);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
